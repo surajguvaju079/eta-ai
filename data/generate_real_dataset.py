@@ -46,7 +46,7 @@ df = pd.read_sql_query(query, conn)
 conn.close()
 
 # ── Basic cleaning ──────────────────────────────────────────────
-df = df.dropna()
+df = df.dropna(subset=["distance_km","speed_kmh","hour","weekday","actual_eta_seconds"])
 df = df[df["distance_km"].between(0.1, 100)]
 df = df[df["speed_kmh"].between(2, 120)]
 df = df[df["actual_eta_seconds"].between(30, 7200)]
